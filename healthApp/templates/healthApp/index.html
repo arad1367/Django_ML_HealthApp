@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App</title>
+    <link rel="stylesheet" href="{% static 'healthApp/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/027c20373b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Background & animion & navbar & title -->
+  <div class="container-fluid">
+<!-- Background animtion-->
+    <div class="background">
+       <div class="cube"></div>
+       <div class="cube"></div>
+       <div class="cube"></div>
+       <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+<!-- header -->
+   <header>
+<!-- navbar -->
+     <nav>
+        <ul>
+           <li><a href="{% url 'healthApp:homepage' %}">Home</a></li>
+           <li><a href="{% url 'healthApp:about' %}">About</a></li>
+            <li><a href="{% url 'healthApp:testmodel' %}">Test your health</a></li>
+            <li><a href="{% url 'healthApp:docs' %}">Docs</a></li>
+            <li><a href="{% url 'healthApp:contacts' %}">Contact</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'users:profile' %}">Profile</a></li>
+            <li><a href="{% url 'users:logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'users:login' %}">Login</a></li>
+            {% endif %}
+         </ul>
+       </nav>
+<!-- logo -->
+      <div class="logo"><span>Health App</span></div>
+<!-- title & content -->
+      <section class="header-content">
+         <h1>Welcome</h1>
+        <p> This is a health App,<br>
+           If you haven't registered yet, Sign up now!</p>
+        <a href="{% url 'users:register' %}"><button>Sign  Up</button></a>
+        <a href="{% url 'users:login' %}"><button>Login</button></a>
+        <footer>Copyright@2023 Pejman Ebrahimi <a href="https://www.linkedin.com/in/pejman-ebrahimi-4a60151a7/"><i style="width:auto; height:auto; border-radius: 5px; background-color: white;" class="fa-brands fa-linkedin"></i></a>  <a style="width:auto; height:auto; border-radius: 5px; background-color: white;" href="https://personal-python-web.onrender.com/"><i class="fa-solid fa-blog"></i></a></footer>
+      </section>
+  </header>
+  </div>
+</body>
+</html>

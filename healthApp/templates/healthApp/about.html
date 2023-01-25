@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App</title>
+    <link rel="stylesheet" href="{% static 'healthApp/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+
+
+
+<body>
+<!-- Background & animion & navbar & title -->
+<div class="container-fluid">
+    <!-- Background animtion-->
+        <div class="background">
+           <div class="cube"></div>
+           <div class="cube"></div>
+           <div class="cube"></div>
+           <div class="cube"></div>
+          <div class="cube"></div>
+        </div>
+    <!-- header -->
+       <header>
+    <!-- navbar -->
+         <nav>
+            <ul>
+               <li><a href="{% url 'healthApp:homepage' %}">Home</a></li>
+                <li><a href="{% url 'healthApp:about' %}">About</a></li>
+                <li><a href="{% url 'healthApp:testmodel' %}">Test your health</a></li>
+                <li><a href="{% url 'healthApp:docs' %}">Docs</a></li>
+                <li><a href="{% url 'healthApp:contacts' %}">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'users:login' %}">Login</a></li>
+                {% endif %}
+             </ul>
+           </nav>
+    <!-- logo -->
+          <div class="logo"><span>Health App</span></div>
+          
+    <!-- title & content -->
+          <section class="header-content">
+             <h1>Welcome</h1>
+             <h2>My name is Pejman, a Python developer and machine learning engineer</h2>
+            <p> This is a machine learning health App,<br>
+               If you haven't registered yet, Sign up now! This is a completely free App</p>
+            <!-- <button>log in</button>
+            <button>Sign Up</button> -->
+          </section>
+      </header>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'healthApp/base.html' %}
+{% block body %}
+
+<div>
+    <div>
+        <div>
+            <img style="width: 5%; height: auto;" src="{{user.profile.image.url}}" alt=""><br>
+        </div>
+        <div>
+            Welcome {{ user.username }}
+        </div><br>
+        <div>
+            Contact Number: {{ user.profile.contact_number }}
+        </div>
+        {% if user.profile.contact_number %}
+        <div></div>
+        {% else %}
+        <div>
+            <a href="{% url 'users:editprofile' %}"><button class="profile_button">Edit Profile</button></a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock body %}

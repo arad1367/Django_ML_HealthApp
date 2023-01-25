@@ -1,0 +1,78 @@
+{% extends 'healthApp/base.html' %}
+{% block body %}
+
+
+<h2>The following are the features you can use to predict our target variable (heart disease-warning or no heart disease-healthy person).</h1><br>
+    <h3>All fields are numeric and you can not enter string in the model</h4>
+<div style="text-align: left; background-color: rgb(252, 251, 251); color: black;"><br>
+    <ol>
+        <li style="color: blue;">Age</li><br>
+        <li style="color: blue;">sex: (0 = female, 1 = male).</li><br>
+        <ul>
+            <li>For example if you are a female you should enter 0 in model</li>
+        </ul><br>
+        <li style="color: blue;">cp-Chest Pain Type</li><br>
+        <ul>
+            <li>0: Typical angina: chest pain related decrease blood supply to the heart</li>
+            <li>1: Atypical angina: chest pain not related to heart</li>
+            <li>2: Non-anginal pain: typically esophageal spasms (non heart related)</li>
+            <li>3: Asymptomatic: chest pain not showing signs of disease</li>
+        </ul><br>
+        <li style="color: blue;">trestbps - Resting Blood Pressure</li><br>
+        <ul>
+            <li>Anything above 130-140 is typically cause for concern or heart disease</li>
+        </ul><br>
+        <li style="color: blue;">chol-Serum cholestoral in mg/dl</li><br>
+        <ul>
+            <li>Serum = LDL + HDL + .2 * triglycerides</li>
+            <li>Above 200 is cause for concern or heart disease</li>
+        </ul><br>
+        <li style="color: blue;">fbs - Fasting Blood Sugar is > 120 mg/dl) (0 = False, 1 = True)</li><br>
+        <ul>
+            <li>'fbs > 126' mg/dL signals for diabetes</li>
+        </ul><br>
+        <li style="color: blue;">restecg - Resting Electrocardiographic Results</li><br>
+        <ul>
+            <li>0: Nothing to note</li>
+            <li>1: ST-T Wave abnormality, can range from mild symptoms to severe problems, signals non-normal heart beat</li>
+            <li>2: Possible or definite left ventricular hypertrophy, Enlarged heart's main pumping chamber</li>
+        </ul><br>
+        <li style="color: blue;">thalach - Maximum Heart Rate</li>
+        <ul>
+            <li>You should visit your doctor if your heart rate is consistently above 100 beats per minute or below 60 beats per minute (and you're not an athlete), or you're also experiencing: shortness of breath.</li>
+        </ul><br>
+        <li style="color: blue;">exang - Exercise Induced Angina (0 = No, 1 = Yes)</li>
+        <ul>
+            <li>Stable angina is the most common form of angina. It usually happens during activity (exertion) and goes away with rest or angina medication. For example, pain that comes on when you're walking uphill or in the cold weather may be angina.</li>
+        </ul><br>
+        <li style="color: blue;">oldpeak - ST depression induced by exercise relative to rest</li>
+        <ul>
+            <li>Looks at stress of heart during excercise</li>
+            <li>0 to 4: Unhealthy heart will stress more</li>
+        </ul><br>
+        <li style="color: blue;">Slope - the slope of the peak exercise ST segment</li>
+        <ul>
+            <li>0: Upsloping: better heart rate with excercise (uncommon)</li>
+            <li>1: Flatsloping: minimal change (typical healthy heart)</li>
+            <li>2: Downslopins: signs of unhealthy heart</li>
+        </ul><br>
+        <li style="color: blue;">ca - number of major vessels (0 to 3) colored by flourosopy</li>
+        <ul>
+            <li>Colored vessel means the doctor can see the blood passing through</li>
+            <li>The more blood movement the better (no clots)</li>
+        </ul><br>
+        <li style="color: blue;">thal - Thalium Stress Result</li>
+        <ul>
+            <li>1 to 3: Normal</li>
+            <li>4 to 6: fixed defect, used to be defect but ok now</li>
+            <li>7: reversable defect: no proper blood movement when excercising</li>
+        </ul><br>
+        <li style="color: blue;">Target variable</li>
+        <ul>
+            <li>If you have a healthy heart, you will receive a green alarm</li>
+            <li>If you are in unhealthy situation, you will receive an warning alarm</li>
+        </ul>
+    </ol>
+</div>
+
+{% endblock %}

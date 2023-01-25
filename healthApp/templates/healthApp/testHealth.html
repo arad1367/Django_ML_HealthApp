@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App</title>
+    <link rel="stylesheet" href="{% static 'healthApp/stylesML.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+
+<!-- Background & animion & navbar & title -->
+<div class="container-fluid">
+  <!-- Background animtion-->
+  <!-- header -->
+     <header>
+  <!-- navbar -->
+       <nav>
+          <ul>
+             <li><a href="{% url 'healthApp:homepage' %}">Home</a></li>
+             <li><a href="{% url 'healthApp:about' %}">About</a></li>
+             <li><a href="{% url 'healthApp:docs' %}">Docs</a></li>
+              <li><a href="{% url 'healthApp:contacts' %}">Contact</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'users:profile' %}">Profile</a></li>
+              <li><a href="{% url 'users:logout' %}">Logout</a></li>
+              {% else %}
+              <li><a href="{% url 'users:login' %}">Login</a></li>
+              {% endif %}
+           </ul>
+        </nav>
+  <!-- logo -->
+    </header>
+</div> 
+
+
+<!-- <section> -->
+    <!-- navbar -->
+    <!-- <nav>
+        <ul>
+            <li><a href="{% url 'healthApp:homepage' %}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav> -->
+    <!-- navbar -->
+<!-- </section> -->
+
+<body>
+    <section class="get-in-touch">
+      {% if health_pred == 0 %}
+        <h1 style="text-align: center; color: rgb(18, 113, 26); font-weight: bold;">Dear {{clientname}}, You have a healthy heart.</h1>
+        <div class="wrap1">
+          <button type="" class="button1">Healthy</button>
+         </div>
+      {% endif %}
+      {% if health_pred == 1 %}
+      <h1 style="text-align: center; color: rgb(230, 84, 31); font-weight: bold;">Dear {{clientname}}, You have some unhealthy symptoms.</h1>
+      <h5 style="text-align: center; color: rgb(17, 92, 9);">This is a good time to go gym and select healthy lifestyle</h5>
+      <div class="wrap2">
+        <button type="" class="button2">Warning</button>
+       </div>
+      {% endif %}
+        <h1 style="color: red; font-size: larger;" class="title">Please check the documentation and then complete the form</h1>
+        <form class="contact-form row" method="POST">
+            {% csrf_token %}
+           <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="text" name="firstname" required="required">
+            <label class="label">Firstname</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="text" name="lastname" required="required">
+            <label class="label">Lastname</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="age" required="required" value="33">
+            <label class="label">Age</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="sex" required="required" value="0">
+            <label class="label">Sex</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="cp" required="required" value="1">
+            <label class="label">Chest pain type</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="trestbps" required="required" value="110">
+            <label class="label">Resting blood pressure</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="chol" required="required" value="110">
+            <label class="label">Cholestoral</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="fbs" required="required" value="0">
+            <label class="label">Fasting blood sugar > 120 mg/dl</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="restecg" required="required" value="0">
+            <label class="label">Resting electrocardiographic results</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="thalach" required="required" value="140">
+            <label class="label">Maximum heart rate</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="exang" required="required" value="1">
+            <label class="label">Exercise induced angina</label>
+          </div> 
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="oldpeak" required="required" value="0">
+            <label class="label">ST depression</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="slope" required="required" value="1">
+            <label class="label">Slope of the peak exercise</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <input class="input-text js-input" type="number" name="ca" required="required" value="4">
+            <label class="label">Number of major vessels</label>
+          </div>
+          <div class="form-field col-lg-6">
+           <input class="input-text js-input" type="number" name="thal" required="required" value="2">
+           <label class="label">Thalium stress result</label>
+          </div> 
+           <!-- <div class="form-field col-lg-12">
+              <button class="glow-on-hover" type="submit">Submit</button>
+           </div> -->
+           <div class="wrap">
+            <button type="submit" class="button">Submit</button>
+           </div>
+        </form>
+     </section>
+
+</body>
+</html>
+

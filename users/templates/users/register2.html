@@ -1,0 +1,26 @@
+<!-- <div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+    {{form.as_p}}                  
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="">login</a> instead.</p>
+</div> -->
+
+<div>
+    <div>
+        <div>
+            <img style="width: 40%; height: auto;" src="{{user.profile.image.url}}" alt="">
+        </div>
+        <div>
+            Welcome {{ user.username }}
+        </div><br>
+        <div>
+            Contact Number: {{ user.profile.contact_number }}
+        </div>
+        <div>
+            <a href="{% url 'users:editprofile' %}"><button class="profile_button">Edit Profile</button></a>
+        </div>
+    </div>
+</div>
